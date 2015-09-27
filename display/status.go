@@ -95,7 +95,7 @@ func (display *Status) Tick(event tl.Event) {
 	display.textLine4.SetText("Weapons")
 	weapons := display.player.Weapons()
 	if len(weapons) > 0 {
-		display.textLine5.SetText("    Name: " + "weapons[0].Name()")
+		display.textLine5.SetText("    Name: " + weapons[0].Name())
 		display.textLine5.SetColor(tl.ColorWhite, tl.ColorBlack)
 		display.textLine6.SetText("   Range: " + strconv.Itoa(weapons[0].Range()))
 		display.textLine7.SetText("  Damage: " + strconv.Itoa(weapons[0].Damage()))
