@@ -32,57 +32,67 @@ func NewMech(name string, maxStructure, x, y int) *mech {
 	return &newMech
 }
 
+//Name returns the name of the mech
+func (m mech) Name() string {
+	return m.name
+}
+
+//Weapons returns the mechs weapons
+func (m mech) Weapons() []weapon.Weapon {
+	return m.weapons
+}
+
 // StructureLeft Retrieves the amount of remaining structure a mech has.
-func (mech mech) StructureLeft() int {
-	return mech.structure
+func (m mech) StructureLeft() int {
+	return m.structure
 }
 
 // Size returns the height and width of the mech
-func (mech mech) Size() (int, int) {
-	return mech.entity.Size()
+func (m mech) Size() (int, int) {
+	return m.entity.Size()
 }
 
 // Position returns the x,y position of the mech
-func (mech mech) Position() (int, int) {
-	return mech.entity.Position()
+func (m mech) Position() (int, int) {
+	return m.entity.Position()
 }
 
 // Collide is used called to see if the mech collided with another physical object
-func (mech *mech) Collide(collision tl.Physical) {
+func (m *mech) Collide(collision tl.Physical) {
 	// Check if it's a Rectangle we're colliding with
 	if _, ok := collision.(*tl.Rectangle); ok {
-		mech.entity.SetPosition(mech.prevX, mech.prevY)
+		m.entity.SetPosition(m.prevX, m.prevY)
 	}
 }
 
 // Draw passes the draw call to entity.
-func (mech *mech) Draw(screen *tl.Screen) {
-	mech.entity.Draw(screen)
+func (m *mech) Draw(screen *tl.Screen) {
+	m.entity.Draw(screen)
 }
 
 // Tick is called to process 1 tick of actions based on the
 // type of event.
-func (mech *mech) Tick(event tl.Event) {
+func (m *mech) Tick(event tl.Event) {
 
 }
 
 // Hit is call when a mech is hit
-func (mech *mech) Hit(damage int) {
-	mech.structure -= damage
-	fmt.Println(mech.name, "takes", damage, "damage")
-	if mech.structure <= 0 {
-		fmt.Println(mech.name, "destroyed")
+func (m *mech) Hit(damage int) {
+	m.structure -= damage
+	fmt.Println(m.name, "takes", damage, "damage")
+	if m.structure <= 0 {
+		fmt.Println(m.name, "destroyed")
 	}
 }
 
 // AddWeapon adds a Weapon to the mech
-func (mech *mech) AddWeapon(weapon weapon.Weapon) {
-	mech.weapons = append(mech.weapons, weapon)
+func (m *mech) AddWeapon(weapon weapon.Weapon) {
+	m.weapons = append(m.weapons, weapon)
 }
 
 // Fire tells the Mech to fire at a Target
-func (mech *mech) Fire(rangeToTarget int, target weapon.Target) {
-	for _, weapon := range mech.weapons {
+func (m *mech) Fire(rangeToTarget int, target weapon.Target) {
+	for _, weapon := range m.weapons {
 		weapon.Fire(rangeToTarget, target)
 	}
 }

@@ -20,6 +20,26 @@ func Create(maxRange int, damage int, name string,
 		hitRate: hitRate}
 }
 
+//Name returns the name of the weapon
+func (weapon Weapon) Name() string {
+	return weapon.name
+}
+
+//Range returns the range of the weapon
+func (weapon Weapon) Range() int {
+	return weapon.maxRange
+}
+
+//Damage returns the damage of the weapon
+func (weapon Weapon) Damage() int {
+	return weapon.damage
+}
+
+//Accuracy returns the accuracy of the weapon
+func (weapon Weapon) Accuracy() float64 {
+	return weapon.hitRate
+}
+
 // Fire is used by an object to fire at a Target.
 // Requires the range to the Target and the Target.
 func (weapon Weapon) Fire(rangeToTarget int, target Target) {

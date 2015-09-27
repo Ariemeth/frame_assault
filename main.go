@@ -4,6 +4,7 @@ package main
 import (
 	"github.com/Ariemeth/go_game_jam/display"
 	"github.com/Ariemeth/go_game_jam/mech"
+	"github.com/Ariemeth/go_game_jam/mech/weapon"
 	tl "github.com/JoelOtter/termloop"
 )
 
@@ -18,9 +19,11 @@ func main() {
 	level.AddEntity(tl.NewRectangle(10, 10, 50, 20, tl.ColorBlue))
 
 	player := mech.NewPlayerMech("Player", 2, 1, 1, level)
+	weapon1 := weapon.Create(5, 1, "Rifle", .75)
+	player.AddWeapon(weapon1)
 	level.AddEntity(player)
 
-	status := display.NewStatusDisplay(0, 0, 20, 20, player, level)
+	status := display.NewStatusDisplay(0, 0, 20, 12, player, level)
 	level.AddEntity(status)
 
 	game.Screen().SetLevel(level)
