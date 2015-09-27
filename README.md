@@ -17,4 +17,7 @@ Next I went to work on a status display.  I had expected this to be quick and ea
 
 At this point I was ready to start adding some enemy mechs into the world to destroy even if I wouldn't have time to add AI.  Unfortunately this is where I run out of time.
 
-At this point there is a green world with a small blue lake.  The player can move a mech around and see there status in the top left section of the display.  While I didn't finish the basic game I had hoped to get done, I learned a lot more about go and started to feel that I was actually getting the language down instead of having to constantly look back at what the signature needed to be for everything.  Going forward even after the Jam I plan on continueing work to get it to the basic game idea I originally had wanted it to be.
+At this point there is a green world with a small blue lake.  The player can move a mech around and see there status in the top left section of the display.  While I didn't finish the basic game I had hoped to get done, I learned a lot more about go and started to feel that I was actually getting the language down instead of having to constantly look back at what the signature needed to be for everything.  Going forward even after the Jam I plan on continuing work to get it to the basic game idea I originally had wanted it to be.
+
+## Tools used
+For Mech Simulator 0.002 I used Atom with the go plus package.  I tried a few different terminal packages but they just didn't work as well as I would like, so I ended up using a seperate terminal window to test from.  I used the Hack font, Nucleus Dark UI theme and the VisualDark Syntax theme.
