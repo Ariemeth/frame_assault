@@ -6,7 +6,7 @@ import (
 
 //PlayerMech represents a player controlled mech
 type PlayerMech struct {
-	mech
+	Mech
 	level *tl.BaseLevel
 }
 

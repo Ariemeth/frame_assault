@@ -12,7 +12,7 @@ func TestNewMech(t *testing.T) {
 	const mechName string = "testMech"
 	const structure int = 2
 
-	mech1 := NewMech(mechName, structure, tl.NewEntity(1, 1, 1, 1))
+	mech1 := NewMech(mechName, structure, 0, 0, tl.ColorRed, 'T')
 	if mech1 == nil {
 		t.Errorf("%s was unable to be created",
 			mechName)
@@ -35,7 +35,7 @@ func TestHit(t *testing.T) {
 	const mechName string = "testMech"
 	const structure int = 2
 
-	mech1 := NewMech(mechName, structure, tl.NewEntity(1, 1, 1, 1))
+	mech1 := NewMech(mechName, structure, 0, 0, tl.ColorRed, 'T')
 	if mech1 == nil {
 		t.Errorf("%s was unable to be created",
 			mechName)
@@ -59,7 +59,7 @@ func TestStructureLeft(t *testing.T) {
 	const mechName string = "testMech"
 	const structure int = 2
 
-	mech1 := NewMech(mechName, structure, tl.NewEntity(1, 1, 1, 1))
+	mech1 := NewMech(mechName, structure, 0, 0, tl.ColorRed, 'T')
 	if mech1 == nil {
 		t.Errorf("%s was unable to be created",
 			mechName)
@@ -77,7 +77,7 @@ func TestAddWeapon(t *testing.T) {
 	const mechName string = "testMech"
 	const structure int = 2
 
-	mech1 := NewMech(mechName, structure, tl.NewEntity(1, 1, 1, 1))
+	mech1 := NewMech(mechName, structure, 0, 0, tl.ColorRed, 'T')
 	if mech1 == nil {
 		t.Errorf("%s was unable to be created",
 			mechName)
@@ -98,12 +98,12 @@ func TestMechFireInRange(t *testing.T) {
 	const mechName2 string = "testMech2"
 	const structure int = 2
 
-	mech1 := NewMech(mechName, structure, tl.NewEntity(1, 1, 1, 1))
+	mech1 := NewMech(mechName, structure, 0, 0, tl.ColorRed, 'T')
 	if mech1 == nil {
 		t.Errorf("%s was unable to be created", mechName)
 	}
 
-	mech2 := NewMech(mechName2, structure, tl.NewEntity(1, 1, 1, 1))
+	mech2 := NewMech(mechName2, structure, 0, 0, tl.ColorRed, 'T')
 	if mech2 == nil {
 		t.Errorf("%s was unable to be created", mechName2)
 	}
@@ -128,12 +128,12 @@ func TestMechFireOutOfRange(t *testing.T) {
 	const mechName2 string = "testMech2"
 	const structure int = 2
 
-	mech1 := NewMech(mechName, structure, tl.NewEntity(1, 1, 1, 1))
+	mech1 := NewMech(mechName, structure, 0, 0, tl.ColorRed, 'T')
 	if mech1 == nil {
 		t.Errorf("%s was unable to be created", mechName)
 	}
 
-	mech2 := NewMech(mechName2, structure, tl.NewEntity(1, 1, 1, 1))
+	mech2 := NewMech(mechName2, structure, 0, 0, tl.ColorRed, 'T')
 	if mech2 == nil {
 		t.Errorf("%s was unable to be created", mechName2)
 	}
