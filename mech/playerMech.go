@@ -17,8 +17,11 @@ func NewPlayerMech(name string, maxStructure, x, y int, level *tl.BaseLevel) *Pl
 			name,
 			maxStructure,
 			x,
-			y),
-		level}
+			y,
+			tl.ColorRed,
+			'M'),
+		level,
+	}
 
 	return &newPlayerMech
 }
