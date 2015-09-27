@@ -41,7 +41,7 @@ func (pMech *PlayerMech) SetEnemyList(enemies []*Mech) {
 func (pMech *PlayerMech) Tick(event tl.Event) {
 	if event.Type == tl.EventKey { // Is it a keyboard event?
 		pMech.prevX, pMech.prevY = pMech.entity.Position()
-		pMech.game.Log("key hit %s", (string)((uint8)(event.Key)))
+
 		switch event.Key { // If so, switch on the pressed key.
 		case tl.KeyArrowRight:
 			pMech.entity.SetPosition(pMech.prevX+1, pMech.prevY)
