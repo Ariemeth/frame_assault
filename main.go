@@ -18,8 +18,8 @@ func main() {
 	})
 	level.AddEntity(tl.NewRectangle(10, 10, 50, 20, tl.ColorBlue))
 
-	player := mech.NewPlayerMech("Player", 2, 1, 1, level)
-	weapon1 := weapon.Create(5, 1, "Rifle", .75)
+	player := mech.NewPlayerMech("Player", 10, 1, 1, level)
+	weapon1 := weapon.CreateRifle()
 	player.AddWeapon(weapon1)
 	level.AddEntity(player)
 
