@@ -23,7 +23,7 @@ func main() {
 	player.AddWeapon(weapon1)
 	level.AddEntity(player)
 
-	status := display.NewStatusDisplay(0, 0, 20, 12, player, level)
+	status := display.NewStatusDisplay(0, 0, 20, 13, player, level)
 	level.AddEntity(status)
 
 	game.Screen().SetLevel(level)
