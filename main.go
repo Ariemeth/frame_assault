@@ -26,6 +26,7 @@ func GenerateEnemyMechs(number int) []*mech.Mech {
 
 		switch chance {
 		case 0:
+			continue
 			m = mech.NewMech("Mech A", i, x, y, tl.ColorRed, rune('A'))
 			m.AddWeapon(weapon.CreateRifle())
 			break
@@ -77,18 +78,23 @@ func main() {
 
 	enemies := GenerateEnemyMechs(8)
 	for _, enemy := range enemies {
+		enemy.AttachGame(game)
 		level.AddEntity(enemy)
 	}
 
 	player := mech.NewPlayerMech("Player", 10, 1, 1, level)
 	weapon1 := weapon.CreateRifle()
 	player.AddWeapon(weapon1)
+	player.SetEnemyList(enemies)
+	player.AttachGame(game)
 	level.AddEntity(player)
 
 	status := display.NewStatusDisplay(0, 0, 20, 13, player, level)
 	level.AddEntity(status)
 
 	game.Screen().SetLevel(level)
+
+	game.SetDebugOn(true)
 
 	game.Start()
 }

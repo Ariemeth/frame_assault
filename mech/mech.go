@@ -2,8 +2,6 @@
 package mech
 
 import (
-	"fmt"
-
 	"github.com/Ariemeth/go_game_jam/mech/weapon"
 	tl "github.com/JoelOtter/termloop"
 )
@@ -17,6 +15,7 @@ type Mech struct {
 	entity       *tl.Entity
 	prevX        int
 	prevY        int
+	game         *tl.Game
 }
 
 // NewMech is used to create a new instance of a mech with default structure.
@@ -30,6 +29,11 @@ func NewMech(name string, maxStructure, x, y int, color tl.Attr, symbol rune) *M
 
 	newMech.entity.SetCell(0, 0, &tl.Cell{Fg: color, Ch: symbol})
 	return &newMech
+}
+
+//AttachGame is used to attach the termloop game struct for logging
+func (m *Mech) AttachGame(game *tl.Game) {
+	m.game = game
 }
 
 //Name returns the name of the mech
@@ -62,12 +66,16 @@ func (m *Mech) Collide(collision tl.Physical) {
 	// Check if it's a Rectangle we're colliding with
 	if _, ok := collision.(*tl.Rectangle); ok {
 		m.entity.SetPosition(m.prevX, m.prevY)
+	} else if _, ok := collision.(*Mech); ok {
+		m.entity.SetPosition(m.prevX, m.prevY)
 	}
 }
 
 // Draw passes the draw call to entity.
 func (m *Mech) Draw(screen *tl.Screen) {
-	m.entity.Draw(screen)
+	if m.StructureLeft() > 0 {
+		m.entity.Draw(screen)
+	}
 }
 
 // Tick is called to process 1 tick of actions based on the
@@ -79,9 +87,9 @@ func (m *Mech) Tick(event tl.Event) {
 // Hit is call when a mech is hit
 func (m *Mech) Hit(damage int) {
 	m.structure -= damage
-	fmt.Println(m.name, "takes", damage, "damage")
+	m.game.Log("%s takes %d damage", m.name, damage)
 	if m.structure <= 0 {
-		fmt.Println(m.name, "destroyed")
+		m.game.Log("%s has been destroyed", m.name)
 	}
 }
 
