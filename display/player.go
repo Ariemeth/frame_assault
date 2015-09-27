@@ -8,25 +8,23 @@ import (
 )
 
 //Status represents a player status display
-type Status struct {
-	background *tl.Rectangle
-	textLine1  *tl.Text
-	textLine2  *tl.Text
-	textLine3  *tl.Text
-	textLine4  *tl.Text
-	textLine5  *tl.Text
-	textLine6  *tl.Text
-	textLine7  *tl.Text
-	textLine8  *tl.Text
-	level      *tl.BaseLevel
-	player     *mech.PlayerMech
-	x          int
-	y          int
+type Player struct {
+	Status
+	textLine1 *tl.Text
+	textLine2 *tl.Text
+	textLine3 *tl.Text
+	textLine4 *tl.Text
+	textLine5 *tl.Text
+	textLine6 *tl.Text
+	textLine7 *tl.Text
+	textLine8 *tl.Text
+	player    *mech.PlayerMech
 }
 
 //NewStatusDisplay creates a new status display for the specified PlayerMech
-func NewStatus(x, y, width, height int, playerMech *mech.PlayerMech, level *tl.BaseLevel) *Status {
-	display := Status{
+func NewPlayerStatus(x, y, width, height int, playerMech *mech.PlayerMech, level *tl.BaseLevel) *Player {
+	display := Player{
+		Status:
 		background: tl.NewRectangle(
 			x,
 			y,
@@ -58,7 +56,7 @@ func NewStatus(x, y, width, height int, playerMech *mech.PlayerMech, level *tl.B
 }
 
 // Draw passes the draw call to entity.
-func (display *Status) Draw(screen *tl.Screen) {
+func (display *Player) Draw(screen *tl.Screen) {
 
 	offSetX, offSetY := display.level.Offset()
 
@@ -85,7 +83,7 @@ func (display *Status) Draw(screen *tl.Screen) {
 
 // Tick is called to process 1 tick of actions based on the
 // type of event.
-func (display *Status) Tick(event tl.Event) {
+func (display *Player) Tick(event tl.Event) {
 	display.textLine1.SetText(display.player.Name())
 	display.textLine2.SetText("Struture: " + strconv.Itoa(display.player.StructureLeft()))
 	x, y := display.player.Position()
