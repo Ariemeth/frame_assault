@@ -10,7 +10,7 @@ type playerMech struct {
 
 // NewMech is used to create a new instance of a mech with default structure.
 func NewPlayerMech(name string, maxStructure int, entity *tl.Entity) *playerMech {
-	newPlayerMech := playerMech{*(NewMech(name, maxStructure, entity))}
+	newPlayerMech := playerMech{*NewMech(name, maxStructure, entity)}
 	//	newPlayerMech.mech =
 	return &newPlayerMech
 }
