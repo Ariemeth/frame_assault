@@ -20,12 +20,12 @@ type mech struct {
 }
 
 // NewMech is used to create a new instance of a mech with default structure.
-func NewMech(name string, maxStructure int, entity *tl.Entity) *mech {
+func NewMech(name string, maxStructure, x, y int) *mech {
 	newMech := mech{
 		name:         name,
 		structure:    maxStructure,
 		maxStructure: maxStructure,
-		entity:       entity,
+		entity:       tl.NewEntity(x, y, 1, 1),
 	}
 
 	newMech.entity.SetCell(0, 0, &tl.Cell{Fg: tl.ColorRed, Ch: 'M'})
