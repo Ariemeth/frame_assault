@@ -15,13 +15,20 @@ type mech struct {
 	weapons      []weapon.Weapon
 	name         string
 	entity       *tl.Entity
+	prevX        int
+	prevY        int
 }
 
 // NewMech is used to create a new instance of a mech with default structure.
 func NewMech(name string, maxStructure int, entity *tl.Entity) *mech {
-	newMech := mech{name: name, structure: maxStructure,
-		maxStructure: maxStructure, entity: entity}
-	entity.SetCell(0, 0, &tl.Cell{Fg: tl.ColorRed, Ch: '옷'})
+	newMech := mech{
+		name:         name,
+		structure:    maxStructure,
+		maxStructure: maxStructure,
+		entity:       entity,
+	}
+
+	newMech.entity.SetCell(0, 0, &tl.Cell{Fg: tl.ColorRed, Ch: 'M'})
 	return &newMech
 }
 
@@ -30,29 +37,33 @@ func (mech mech) StructureLeft() int {
 	return mech.structure
 }
 
+// Size returns the height and width of the mech
+func (mech mech) Size() (int, int) {
+	return mech.entity.Size()
+}
+
+// Position returns the x,y position of the mech
+func (mech mech) Position() (int, int) {
+	return mech.entity.Position()
+}
+
+// Collide is used called to see if the mech collided with another physical object
+func (mech *mech) Collide(collision tl.Physical) {
+	// Check if it's a Rectangle we're colliding with
+	if _, ok := collision.(*tl.Rectangle); ok {
+		mech.entity.SetPosition(mech.prevX, mech.prevY)
+	}
+}
+
 // Draw passes the draw call to entity.
 func (mech *mech) Draw(screen *tl.Screen) {
 	mech.entity.Draw(screen)
 }
 
+// Tick is called to process 1 tick of actions based on the
+// type of event.
 func (mech *mech) Tick(event tl.Event) {
-	if event.Type == tl.EventKey { // Is it a keyboard event?
-		x, y := mech.entity.Position()
-		switch event.Key { // If so, switch on the pressed key.
-		case tl.KeyArrowRight:
-			mech.entity.SetPosition(x+1, y)
-			break
-		case tl.KeyArrowLeft:
-			mech.entity.SetPosition(x-1, y)
-			break
-		case tl.KeyArrowUp:
-			mech.entity.SetPosition(x, y-1)
-			break
-		case tl.KeyArrowDown:
-			mech.entity.SetPosition(x, y+1)
-			break
-		}
-	}
+
 }
 
 // Hit is call when a mech is hit

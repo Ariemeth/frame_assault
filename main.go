@@ -12,12 +12,13 @@ func main() {
 	level := tl.NewBaseLevel(tl.Cell{
 		Bg: tl.ColorGreen,
 		Fg: tl.ColorBlack,
-//		Ch: 'v',
+		//		Ch: 'v',
 	})
 	level.AddEntity(tl.NewRectangle(10, 10, 50, 20, tl.ColorBlue))
-	player := mech.NewMech("Mech1", 2, tl.NewEntity(1, 1, 1, 1))
+	status := tl.NewText(0, 10, "blah", tl.ColorWhite, tl.ColorBlack)
+	level.AddEntity(status)
+	player := mech.NewPlayerMech("Mech1", 2, tl.NewEntity(1, 1, 1, 1))
 	level.AddEntity(player)
-
 	game.Screen().SetLevel(level)
 
 	game.Start()
