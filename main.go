@@ -26,9 +26,8 @@ func GenerateEnemyMechs(number int) []*mech.Mech {
 
 		switch chance {
 		case 0:
-			continue
-			m = mech.NewMech("Mech A", i, x, y, tl.ColorRed, rune('A'))
-			m.AddWeapon(weapon.CreateRifle())
+			//			m = mech.NewMech("Mech A", i, x, y, tl.ColorRed, rune('A'))
+			//			m.AddWeapon(weapon.CreateRifle())
 			break
 		case 1:
 			m = mech.NewMech("Mech B", i, x, y, tl.ColorRed, rune('B'))
@@ -60,7 +59,9 @@ func GenerateEnemyMechs(number int) []*mech.Mech {
 			break
 		}
 
-		enemyMechs = append(enemyMechs, m)
+		if m != nil {
+			enemyMechs = append(enemyMechs, m)
+		}
 	}
 
 	return enemyMechs
@@ -89,7 +90,7 @@ func main() {
 	player.AttachGame(game)
 	level.AddEntity(player)
 
-	status := display.NewStatusDisplay(0, 0, 20, 13, player, level)
+	status := display.NewPlayerStatus(0, 0, 20, 13, player, level)
 	level.AddEntity(status)
 
 	game.Screen().SetLevel(level)
