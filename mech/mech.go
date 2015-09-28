@@ -2,7 +2,10 @@
 package mech
 
 import (
+	"strconv"
+
 	"github.com/Ariemeth/go_game_jam/mech/weapon"
+	"github.com/Ariemeth/go_game_jam/util"
 	tl "github.com/JoelOtter/termloop"
 )
 
@@ -16,6 +19,7 @@ type Mech struct {
 	prevX        int
 	prevY        int
 	game         *tl.Game
+	notifier     util.Notifier
 }
 
 // NewMech is used to create a new instance of a mech with default structure.
@@ -34,6 +38,11 @@ func NewMech(name string, maxStructure, x, y int, color tl.Attr, symbol rune) *M
 //AttachGame is used to attach the termloop game struct for logging
 func (m *Mech) AttachGame(game *tl.Game) {
 	m.game = game
+}
+
+//AttachNotifier is used to attach a notification display
+func (m *Mech) AttachNotifier(notifier util.Notifier) {
+	m.notifier = notifier
 }
 
 //Name returns the name of the mech
@@ -87,9 +96,15 @@ func (m *Mech) Tick(event tl.Event) {
 // Hit is call when a mech is hit
 func (m *Mech) Hit(damage int) {
 	m.structure -= damage
-	m.game.Log("%s takes %d damage", m.name, damage)
+	message1 := m.name + " takes " + strconv.Itoa(damage)
+	m.game.Log(message1)
+	m.notifier.AddMessage(message1)
+
 	if m.structure <= 0 {
-		m.game.Log("%s has been destroyed", m.name)
+		message2 := m.name + " has been destroyed"
+		m.game.Log(message2)
+		m.notifier.AddMessage(message2)
+		m.game.Screen().Level().RemoveEntity(m)
 	}
 }
 

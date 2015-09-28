@@ -79,10 +79,14 @@ func main() {
 	})
 	level.AddEntity(tl.NewRectangle(10, 10, 50, 20, tl.ColorBlue))
 
+	//Create the notification display
+	notification := display.NewNotification(25, 0, 45, 6, level)
+
 	//Create the enemy mechs
 	enemies := GenerateEnemyMechs(8)
 	for _, enemy := range enemies {
 		enemy.AttachGame(game)
+		enemy.AttachNotifier(notification)
 		level.AddEntity(enemy)
 	}
 
@@ -92,13 +96,14 @@ func main() {
 	player.AddWeapon(weapon1)
 	player.SetEnemyList(enemies)
 	player.AttachGame(game)
+	player.AttachNotifier(notification)
 	level.AddEntity(player)
 
 	//Create the players mech status display
 	status := display.NewPlayerStatus(0, 0, 20, 13, player, level)
-	level.AddEntity(status)
 
-	notification := display.NewNotification(25, 0, 45, 6, level)
+	//Attach the displays the the level
+	level.AddEntity(status)
 	level.AddEntity(notification)
 
 	//Set the level to be the current game level

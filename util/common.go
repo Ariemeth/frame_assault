@@ -12,3 +12,8 @@ func CalculateDistance(x1, y1, x2, y2 int) float64 {
 	d := math.Sqrt(x + y)
 	return d
 }
+
+// Notifier is an interface that can be implemented to recieve messages
+type Notifier interface {
+	AddMessage(string)
+}
