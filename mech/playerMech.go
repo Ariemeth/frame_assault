@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Ariemeth/go_game_jam/util"
+	"github.com/Ariemeth/frame_assault/util"
 	tl "github.com/JoelOtter/termloop"
 )
 

@@ -3,7 +3,7 @@ package display
 import (
 	"strconv"
 
-	"github.com/Ariemeth/go_game_jam/mech"
+	"github.com/Ariemeth/frame_assault/mech"
 	tl "github.com/JoelOtter/termloop"
 )
 

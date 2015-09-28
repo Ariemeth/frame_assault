@@ -4,8 +4,8 @@ package mech
 import (
 	"strconv"
 
-	"github.com/Ariemeth/go_game_jam/mech/weapon"
-	"github.com/Ariemeth/go_game_jam/util"
+	"github.com/Ariemeth/frame_assault/mech/weapon"
+	"github.com/Ariemeth/frame_assault/util"
 	tl "github.com/JoelOtter/termloop"
 )
 

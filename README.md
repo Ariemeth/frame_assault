@@ -1,4 +1,4 @@
-# [Frame Assault 0.002](https://github.com/Ariemeth/go_game_jam)
+# [Frame Assault 0.002](https://github.com/Ariemeth/frame_assault)
 
 ## Summary
 Frame Assault 0.002 is a turn based terminal game where you move a mech around destroying any enemy mechs that you encounter.  Mechs come equipped with a range of weapons from rifles and shotguns to clubs and axes.  
@@ -6,7 +6,7 @@ Frame Assault 0.002 is a turn based terminal game where you move a mech around d
 ## Installation
 
 ~~~
-git clone https://github.com/Ariemeth/go_game_jam
+git clone https://github.com/Ariemeth/frame_assault
 
 go get -u github.com/JoelOtter/termloop
 

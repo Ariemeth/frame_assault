@@ -5,9 +5,9 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/Ariemeth/go_game_jam/display"
-	"github.com/Ariemeth/go_game_jam/mech"
-	"github.com/Ariemeth/go_game_jam/mech/weapon"
+	"github.com/Ariemeth/frame_assault/display"
+	"github.com/Ariemeth/frame_assault/mech"
+	"github.com/Ariemeth/frame_assault/mech/weapon"
 	tl "github.com/JoelOtter/termloop"
 )
 
