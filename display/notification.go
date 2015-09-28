@@ -19,7 +19,7 @@ func NewNotification(x, y, width, height int, level *tl.BaseLevel) *Notification
 		Status: *NewStatus(x, y, width, height, level),
 	}
 
-	notification.textLine1 = tl.NewText(x, y, "", tl.ColorWhite, tl.ColorBlack)
+	notification.textLine1 = tl.NewText(x, y, "No notifications", tl.ColorWhite, tl.ColorBlack)
 	notification.textLine2 = tl.NewText(x, y, "", tl.ColorWhite, tl.ColorBlack)
 	notification.textLine3 = tl.NewText(x, y, "", tl.ColorWhite, tl.ColorBlack)
 	notification.textLine4 = tl.NewText(x, y, "", tl.ColorWhite, tl.ColorBlack)
