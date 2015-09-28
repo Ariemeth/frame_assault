@@ -109,7 +109,7 @@ func main() {
 	//Set the level to be the current game level
 	game.Screen().SetLevel(level)
 
-	game.SetDebugOn(true)
+	game.SetDebugOn(false)
 
 	//Start the game engine
 	game.Start()
