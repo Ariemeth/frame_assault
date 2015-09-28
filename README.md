@@ -33,3 +33,8 @@ At this point there is a green world with a small blue lake.  The player can mov
 
 ## Tools used
 For Mech Simulator 0.002 I used Atom with the go plus package.  I tried a few different terminal packages but they just didn't work as well as I would like, so I ended up using a separate terminal window to test from.  I used the Hack font, Nucleus Dark UI theme and the VisualDark Syntax theme.
+
+## Screenshots
+![Image1](media/gameShot1.png)
+
+![Image2](media/gameShot2.png)
