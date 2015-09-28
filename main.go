@@ -98,6 +98,9 @@ func main() {
 	status := display.NewPlayerStatus(0, 0, 20, 13, player, level)
 	level.AddEntity(status)
 
+	notification := display.NewNotification(25, 0, 45, 6, level)
+	level.AddEntity(notification)
+
 	//Set the level to be the current game level
 	game.Screen().SetLevel(level)
 
