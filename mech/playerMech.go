@@ -42,6 +42,42 @@ func (pMech *PlayerMech) Tick(event tl.Event) {
 	if event.Type == tl.EventKey { // Is it a keyboard event?
 		pMech.prevX, pMech.prevY = pMech.entity.Position()
 
+		//quick fix to handle keys
+		switch event.Ch {
+		case 'A':
+		case 'a':
+			pMech.attackTarget("A")
+			break
+		case 'B':
+		case 'b':
+			pMech.attackTarget("B")
+			break
+		case 'C':
+		case 'c':
+			pMech.attackTarget("C")
+			break
+		case 'D':
+		case 'd':
+			pMech.attackTarget("D")
+			break
+		case 'E':
+		case 'e':
+			pMech.attackTarget("E")
+			break
+		case 'F':
+		case 'f':
+			pMech.attackTarget("F")
+			break
+		case 'G':
+		case 'g':
+			pMech.attackTarget("G")
+			break
+		case 'H':
+		case 'h':
+			pMech.attackTarget("H")
+			break
+		}
+
 		switch event.Key { // If so, switch on the pressed key.
 		case tl.KeyArrowRight:
 			pMech.entity.SetPosition(pMech.prevX+1, pMech.prevY)
@@ -54,30 +90,6 @@ func (pMech *PlayerMech) Tick(event tl.Event) {
 			break
 		case tl.KeyArrowDown:
 			pMech.entity.SetPosition(pMech.prevX, pMech.prevY+1)
-			break
-		case tl.KeyCtrlA:
-			pMech.attackTarget("A")
-			break
-		case tl.KeyCtrlB:
-			pMech.attackTarget("B")
-			break
-		case tl.KeyCtrlC:
-			pMech.attackTarget("C")
-			break
-		case tl.KeyCtrlD:
-			pMech.attackTarget("D")
-			break
-		case tl.KeyCtrlE:
-			pMech.attackTarget("E")
-			break
-		case tl.KeyCtrlF:
-			pMech.attackTarget("F")
-			break
-		case tl.KeyCtrlG:
-			pMech.attackTarget("G")
-			break
-		case tl.KeyCtrlH:
-			pMech.attackTarget("H")
 			break
 		}
 	}
