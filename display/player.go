@@ -7,7 +7,7 @@ import (
 	tl "github.com/JoelOtter/termloop"
 )
 
-//Status represents a player status display
+//Player represents a player status display
 type Player struct {
 	Status
 	textLine1 *tl.Text
@@ -21,38 +21,23 @@ type Player struct {
 	player    *mech.PlayerMech
 }
 
-//NewStatusDisplay creates a new status display for the specified PlayerMech
+//NewPlayerStatus creates a new status display for the specified PlayerMech
 func NewPlayerStatus(x, y, width, height int, playerMech *mech.PlayerMech, level *tl.BaseLevel) *Player {
-	display := Player{
-		Status:
-		background: tl.NewRectangle(
-			x,
-			y,
-			width,
-			height,
-			tl.ColorBlack),
+	playerStatus := Player{
+		Status: *NewStatus(x, y, width, height, level),
 		player: playerMech,
-		textLine1: tl.NewText(
-			x,
-			y,
-			"display",
-			tl.ColorWhite,
-			tl.ColorBlack),
-		level: level,
-		x:     x,
-		y:     y,
 	}
 
-	display.textLine1 = tl.NewText(x, y, "line1", tl.ColorWhite, tl.ColorBlack)
-	display.textLine2 = tl.NewText(x, y, "line2", tl.ColorWhite, tl.ColorBlack)
-	display.textLine3 = tl.NewText(x, y, "line3", tl.ColorWhite, tl.ColorBlack)
-	display.textLine4 = tl.NewText(x, y, "line4", tl.ColorWhite, tl.ColorBlack)
-	display.textLine5 = tl.NewText(x, y, "line5", tl.ColorWhite, tl.ColorBlack)
-	display.textLine6 = tl.NewText(x, y, "line6", tl.ColorWhite, tl.ColorBlack)
-	display.textLine7 = tl.NewText(x, y, "line7", tl.ColorWhite, tl.ColorBlack)
-	display.textLine8 = tl.NewText(x, y, "line7", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine1 = tl.NewText(x, y, "line1", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine2 = tl.NewText(x, y, "line2", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine3 = tl.NewText(x, y, "line3", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine4 = tl.NewText(x, y, "line4", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine5 = tl.NewText(x, y, "line5", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine6 = tl.NewText(x, y, "line6", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine7 = tl.NewText(x, y, "line7", tl.ColorWhite, tl.ColorBlack)
+	playerStatus.textLine8 = tl.NewText(x, y, "line7", tl.ColorWhite, tl.ColorBlack)
 
-	return &display
+	return &playerStatus
 }
 
 // Draw passes the draw call to entity.
