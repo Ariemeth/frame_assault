@@ -68,8 +68,10 @@ func GenerateEnemyMechs(number int) []*mech.Mech {
 }
 
 func main() {
+	//Create the game
 	game := tl.NewGame()
 
+	//Create the level for the game
 	level := tl.NewBaseLevel(tl.Cell{
 		Bg: tl.ColorGreen,
 		Fg: tl.ColorBlack,
@@ -77,12 +79,14 @@ func main() {
 	})
 	level.AddEntity(tl.NewRectangle(10, 10, 50, 20, tl.ColorBlue))
 
+	//Create the enemy mechs
 	enemies := GenerateEnemyMechs(8)
 	for _, enemy := range enemies {
 		enemy.AttachGame(game)
 		level.AddEntity(enemy)
 	}
 
+	//Create the player's mech
 	player := mech.NewPlayerMech("Player", 10, 1, 1, level)
 	weapon1 := weapon.CreateRifle()
 	player.AddWeapon(weapon1)
@@ -90,12 +94,15 @@ func main() {
 	player.AttachGame(game)
 	level.AddEntity(player)
 
+	//Create the players mech status display
 	status := display.NewPlayerStatus(0, 0, 20, 13, player, level)
 	level.AddEntity(status)
 
+	//Set the level to be the current game level
 	game.Screen().SetLevel(level)
 
 	game.SetDebugOn(true)
 
+	//Start the game engine
 	game.Start()
 }
