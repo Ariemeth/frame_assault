@@ -6,7 +6,7 @@ import (
 
 	"github.com/Ariemeth/frame_assault/mech/weapon"
 	"github.com/Ariemeth/frame_assault/util"
-	tl "github.com/JoelOtter/termloop"
+	tl "github.com/Ariemeth/termloop"
 )
 
 // Mech is a basic mech type

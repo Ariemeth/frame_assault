@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/Ariemeth/frame_assault/mech/weapon"
-	tl "github.com/JoelOtter/termloop"
+	tl "github.com/Ariemeth/termloop"
 )
 
 func TestNewMech(t *testing.T) {

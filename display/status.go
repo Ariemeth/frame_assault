@@ -1,6 +1,6 @@
 package display
 
-import tl "github.com/JoelOtter/termloop"
+import tl "github.com/Ariemeth/termloop"
 
 //Status represents a player status display
 type Status struct {

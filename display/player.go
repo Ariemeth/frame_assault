@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	"github.com/Ariemeth/frame_assault/mech"
-	tl "github.com/JoelOtter/termloop"
+	tl "github.com/Ariemeth/termloop"
 )
 
 //Player represents a player status display

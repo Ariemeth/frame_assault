@@ -8,7 +8,7 @@ import (
 	"github.com/Ariemeth/frame_assault/display"
 	"github.com/Ariemeth/frame_assault/mech"
 	"github.com/Ariemeth/frame_assault/mech/weapon"
-	tl "github.com/JoelOtter/termloop"
+	tl "github.com/Ariemeth/termloop"
 )
 
 // GenerateEnemyMechs creates a slice of mechs to be used as enemies

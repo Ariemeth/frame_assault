@@ -1,7 +1,7 @@
 package display
 
 import (
-	tl "github.com/JoelOtter/termloop"
+	tl "github.com/Ariemeth/termloop"
 )
 
 // Notification is a display used to report important information to the player.

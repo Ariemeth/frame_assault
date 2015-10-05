@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/Ariemeth/frame_assault/util"
-	tl "github.com/JoelOtter/termloop"
+	tl "github.com/Ariemeth/termloop"
 )
 
 //PlayerMech represents a player controlled mech
