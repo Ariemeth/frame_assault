@@ -75,6 +75,7 @@ func (m *Mech) Collide(collision tl.Physical) {
 	// Check if it's a Rectangle we're colliding with
 	if _, ok := collision.(*tl.Rectangle); ok {
 		m.entity.SetPosition(m.prevX, m.prevY)
+	// or if it is another mech
 	} else if _, ok := collision.(*Mech); ok {
 		m.entity.SetPosition(m.prevX, m.prevY)
 	}
