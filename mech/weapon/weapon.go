@@ -1,5 +1,10 @@
 package weapon
 
+import (
+	"math/rand"
+	"time"
+)
+
 // Weapon is weapon with specific characteristics
 type Weapon struct {
 	maxRange, damage int
@@ -9,7 +14,10 @@ type Weapon struct {
 
 // Target is an interface used by objects that can be hit and take damage
 type Target interface {
+	// Hit is called when an object is hit and the amount of damage to be done.
 	Hit(int)
+	// Name should return the name of the target.
+	Name() string
 }
 
 // Create creates a new Weapon.
@@ -42,8 +50,16 @@ func (weapon Weapon) Accuracy() float64 {
 
 // Fire is used by an object to fire at a Target.
 // Requires the range to the Target and the Target.
-func (weapon Weapon) Fire(rangeToTarget int, target Target) {
+// Returns true if the target is hit or false if the target is missed.
+func (weapon Weapon) Fire(rangeToTarget int, target Target) bool {
 	if rangeToTarget <= weapon.maxRange {
-		target.Hit(weapon.damage)
+		r := rand.New(rand.NewSource(time.Now().Unix()))
+
+		chance := r.Float64()
+		if chance <= weapon.Accuracy() {
+			target.Hit(weapon.damage)
+			return true
+		}
 	}
+	return false
 }

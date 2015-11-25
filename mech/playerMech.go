@@ -114,7 +114,12 @@ func (pMech *PlayerMech) getTargetEnemy(name string) *Mech {
 }
 
 func (pMech *PlayerMech) attackTarget(name string) {
+
 	target := pMech.getTargetEnemy(name)
+	if target.StructureLeft() <= 0 {
+		return
+	}
+
 	if target == nil {
 		return
 	}

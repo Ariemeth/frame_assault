@@ -95,12 +95,12 @@ func (m *Mech) Tick(event tl.Event) {
 
 // Hit is call when a mech is hit
 func (m *Mech) Hit(damage int) {
-	
+
 	//check if the mech is already destroyed
 	if m.structure <= 0 {
 		return
 	}
-	
+
 	m.structure -= damage
 	message1 := m.name + " takes " + strconv.Itoa(damage)
 	m.game.Log(message1)
@@ -122,6 +122,9 @@ func (m *Mech) AddWeapon(weapon weapon.Weapon) {
 // Fire tells the Mech to fire at a Target
 func (m *Mech) Fire(rangeToTarget int, target weapon.Target) {
 	for _, weapon := range m.weapons {
-		weapon.Fire(rangeToTarget, target)
+		result := weapon.Fire(rangeToTarget, target)
+		if result == false {
+			m.notifier.AddMessage("Missed " + target.Name())
+		}
 	}
 }
