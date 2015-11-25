@@ -10,7 +10,7 @@ git clone https://github.com/Ariemeth/frame_assault
 
 go get -u github.com/JoelOtter/termloop
 
-cd go_game_jam
+cd frame_assault
 
 go run main.go
 ~~~
