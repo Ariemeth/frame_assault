@@ -17,17 +17,17 @@ func GenerateEnemyMechs(number int) []*mech.Mech {
 
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 
-	for i := 0; i < number; i++ {
+	for i := 1; i <= number; i++ {
 		var m *mech.Mech
 
-		chance := i % 7
+		chance := i % 8
 		x := -15 + r.Intn(30)
 		y := -15 + r.Intn(30)
 
 		switch chance {
 		case 0:
-			//			m = mech.NewMech("Mech A", i, x, y, tl.ColorRed, rune('A'))
-			//			m.AddWeapon(weapon.CreateRifle())
+			m = mech.NewMech("Mech A", i, x, y, tl.ColorRed, rune('A'))
+			m.AddWeapon(weapon.CreateRifle())
 			break
 		case 1:
 			m = mech.NewMech("Mech B", i, x, y, tl.ColorRed, rune('B'))
