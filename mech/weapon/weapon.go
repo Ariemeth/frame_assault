@@ -18,6 +18,10 @@ type Target interface {
 	Hit(int)
 	// Name should return the name of the target.
 	Name() string
+	// IsDestroyed should return true is the target is destroyed, false otherwise.
+	IsDestroyed() bool
+	// Position should return the x,y location of the target.
+	Position() (int,int)
 }
 
 // Create creates a new Weapon.

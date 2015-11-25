@@ -1,10 +1,8 @@
 package mech
 
 import (
-	"strconv"
 	"strings"
 
-	"github.com/Ariemeth/frame_assault/util"
 	tl "github.com/Ariemeth/termloop"
 )
 
@@ -46,35 +44,35 @@ func (pMech *PlayerMech) Tick(event tl.Event) {
 		switch event.Ch {
 		case 'A':
 		case 'a':
-			pMech.attackTarget("A")
+			pMech.attack("A")
 			break
 		case 'B':
 		case 'b':
-			pMech.attackTarget("B")
+			pMech.attack("B")
 			break
 		case 'C':
 		case 'c':
-			pMech.attackTarget("C")
+			pMech.attack("C")
 			break
 		case 'D':
 		case 'd':
-			pMech.attackTarget("D")
+			pMech.attack("D")
 			break
 		case 'E':
 		case 'e':
-			pMech.attackTarget("E")
+			pMech.attack("E")
 			break
 		case 'F':
 		case 'f':
-			pMech.attackTarget("F")
+			pMech.attack("F")
 			break
 		case 'G':
 		case 'g':
-			pMech.attackTarget("G")
+			pMech.attack("G")
 			break
 		case 'H':
 		case 'h':
-			pMech.attackTarget("H")
+			pMech.attack("H")
 			break
 		}
 
@@ -113,20 +111,7 @@ func (pMech *PlayerMech) getTargetEnemy(name string) *Mech {
 	return nil
 }
 
-func (pMech *PlayerMech) attackTarget(name string) {
-
+func (pMech *PlayerMech) attack(name string) {
 	target := pMech.getTargetEnemy(name)
-	if target.StructureLeft() <= 0 {
-		return
-	}
-
-	if target == nil {
-		return
-	}
-
-	targetX, targetY := target.Position()
-	distance := util.CalculateDistance(pMech.prevX, pMech.prevY, targetX, targetY)
-	pMech.Fire((int)(distance), target)
-	pMech.game.Log("distance " + strconv.Itoa((int)(distance)))
-	pMech.game.Log("player (%d,%d), target (%d,%d)", pMech.prevX, pMech.prevY, targetX, targetY)
+	pMech.Mech.attack(target)
 }

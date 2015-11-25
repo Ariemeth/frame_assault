@@ -114,6 +114,11 @@ func (m *Mech) Hit(damage int) {
 	}
 }
 
+// IsDestroyed returns true is the target is destroyed, false otherwise.
+func (m Mech) IsDestroyed() bool {
+	return m.structure <= 0
+}
+
 // AddWeapon adds a Weapon to the mech
 func (m *Mech) AddWeapon(weapon weapon.Weapon) {
 	m.weapons = append(m.weapons, weapon)
@@ -127,4 +132,20 @@ func (m *Mech) Fire(rangeToTarget int, target weapon.Target) {
 			m.notifier.AddMessage("Missed " + target.Name())
 		}
 	}
+}
+
+func (m *Mech) attack(target weapon.Target) {
+
+	if target == nil {
+		return
+	}
+	if target.IsDestroyed() {
+		return
+	}
+
+	targetX, targetY := target.Position()
+	distance := util.CalculateDistance(m.prevX, m.prevY, targetX, targetY)
+	m.Fire((int)(distance), target)
+	m.game.Log("distance " + strconv.Itoa((int)(distance)))
+	m.game.Log("firer (%d,%d), target (%d,%d)", m.prevX, m.prevY, targetX, targetY)
 }
