@@ -8,7 +8,7 @@ Frame Assault 0.002 is a turn based terminal game where you move a mech around d
 ~~~
 git clone https://github.com/Ariemeth/frame_assault
 
-go get -u github.com/JoelOtter/termloop
+go get -u github.com/Ariemeth/termloop
 
 cd frame_assault
 
