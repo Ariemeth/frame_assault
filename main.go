@@ -75,7 +75,7 @@ func main() {
 	level := tl.NewBaseLevel(tl.Cell{
 		Bg: tl.ColorGreen,
 		Fg: tl.ColorBlack,
-		//		Ch: 'v',
+		Ch: ' ',
 	})
 	level.AddEntity(tl.NewRectangle(10, 10, 50, 20, tl.ColorBlue))
 
